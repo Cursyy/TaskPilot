@@ -13,6 +13,30 @@ window.addEventListener('resize', function() {
 });
 
 $(document).ready(function() {
+    // Функція для оновлення кольору дати
+    function updateDateColor() {
+        $('.task_end_date').each(function() {
+            var endDate = new Date($(this).text());
+            var currentDate = new Date();
+            var differenceInDays = Math.ceil((endDate - currentDate) / (1000 * 60 * 60 * 24));
+
+            // Встановлюємо колір відповідно до різниці в датах
+            if (differenceInDays <= 1) {
+                $(this).css('color', 'red');
+            } else if (differenceInDays <= 3) {
+                $(this).css('color', 'orange');
+            } else {
+                $(this).css('color', 'white');
+            }
+        });
+    }
+
+    // Оновлення кольору дати при завантаженні документа
+    updateDateColor();
+
+    // Викликаємо функцію оновлення кольору дати кожні 5 секунд
+    setInterval(updateDateColor, 5000);
+
     $('#create_board_btn').click(function() {
         $('#create_board_popup').show();
     });
@@ -20,6 +44,7 @@ $(document).ready(function() {
     $(document).on('click', function(event) {
         if (!$(event.target).closest('#create_board_popup').length && !$(event.target).is('#create_board_btn')) {
             $('#create_board_popup').hide();
+            $('#board_name').val(''); // Clear input on popup close
         }
     });
 
@@ -27,10 +52,14 @@ $(document).ready(function() {
         event.preventDefault();
         var boardName = $('#board_name').val();
         var regex = /^[a-zA-Z0-9\s]*$/;
-        if (!regex.test(boardName)) {
-            $('#board_name').val('');
+        if (!boardName.trim()) {
+            $('#board_name').attr('placeholder', 'Please enter a board name');
+            $('#board_name').css('border', '1px solid red');
+            return;
+        } else if (!regex.test(boardName)) {
             $('#board_name').attr('placeholder', 'Invalid board name');
             $('#board_name').css('border', '1px solid red');
+            return;
         } else {
             var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
             $.ajax({
@@ -43,6 +72,7 @@ $(document).ready(function() {
                 success: function(data) {
                     $('#create_board_popup').hide();
                     $('#boards_container').append('<button class="board_btn">' + boardName + '</button>');
+                    $('#board_name').val(''); // Clear input after adding new object
                 }
             });
         }
@@ -67,11 +97,13 @@ $(document).ready(function() {
 
     $(document).on('click', '#create_list_btn', function() {
         $('#create_list_popup').show();
+        $('#list_name').val(''); // Clear input on popup open
     });
 
     $(document).on('click', function(event) {
         if (!$(event.target).closest('#create_list_popup').length && !$(event.target).is('#create_list_btn')) {
             $('#create_list_popup').hide();
+            $('#list_name').val(''); // Clear input on popup close
         }
     });
 
@@ -80,10 +112,14 @@ $(document).ready(function() {
         var listName = $('#list_name').val();
         var boardName = $('#board_title').text();
         var regex = /^[a-zA-Z0-9\s]*$/;
-        if (!regex.test(listName)) {
-            $('#list_name').val('');
+        if (!listName.trim()) {
+            $('#list_name').attr('placeholder', 'Please enter a list name');
+            $('#list_name').css('border', '1px solid red');
+            return;
+        } else if (!regex.test(listName)) {
             $('#list_name').attr('placeholder', 'Invalid list name');
             $('#list_name').css('border', '1px solid red');
+            return;
         } else {
             var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
             $.ajax({
@@ -120,6 +156,7 @@ $(document).ready(function() {
                             });
                         }
                     });
+                    $('#list_name').val(''); // Clear input after adding new object
                 }
             });
         }
@@ -161,7 +198,10 @@ $(document).ready(function() {
                             $(this).removeClass('dragging');
                             $(this).draggable('option', 'containment', 'document');
                         }
-                    }); 
+                    });
+                    $('#task_title').val(''); // Clear inputs after adding new object
+                    $('#task_description').val('');
+                    $('#task_end_date').val('');
                 }
             });
         });
@@ -191,6 +231,9 @@ $(document).ready(function() {
             },
             success: function(data) {
                 console.log('Task moved successfully');
+                // Оновити відповідний DOM-елемент завдання з новим розташуванням
+                var $taskItem = $('.task_item[data-task-id="' + taskId + '"]');
+                $taskItem.appendTo($(event.target).find('.tasks')); // Переміщуємо завдання в новий список
             },
             error: function(xhr, status, error) {
                 console.error('Error moving task:', error);
@@ -201,6 +244,9 @@ $(document).ready(function() {
     $(document).on('click', function(event) {
         if (!$(event.target).closest('#create_task_popup').length && !$(event.target).is('#create_task')) {
             $('#create_task_popup').hide();
+            $('#task_title').val(''); // Clear inputs on popup close
+            $('#task_description').val('');
+            $('#task_end_date').val('');
         }
     });
 });

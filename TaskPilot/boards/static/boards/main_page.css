@@ -257,6 +257,7 @@ header > .title{
 .task_end_date {
     color: #fff; /* Колір тексту для кінцевої дати таску */
     font-size: 1.2rem; /* Розмір шрифту для кінцевої дати таску */
+    text-align: end;
 }
 
 
@@ -290,7 +291,7 @@ header > .title{
 }
 
 /* Стилі для текстового поля у попапі */
-.popup input {
+.popup input,textarea {
     width: 100%; /* Ширина поля */
     padding: 10px; /* Відступи всередині поля */
     margin: 10px 0; /* Відступ знизу */
