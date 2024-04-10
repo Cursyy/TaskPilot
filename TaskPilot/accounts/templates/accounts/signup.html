@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskPilot | Sign Up</title>
+    <link rel="stylesheet" href="{% static 'accounts/signup.css' %}">
+    <link rel="icon" href="{% static 'img/small_logo.svg' %}">
+</head>
+<body>
+    <div class="container">
+        <form action="{% url 'account:signup' %}" method="post">
+            {% csrf_token %}
+            <div class="wrap">
+                <h1 class="title">Sign Up</h1>
+                <div class="data_box">
+                    <input class="data_fields" type="text" name="name" placeholder="Username" required>
+                    <input class="data_fields" type="email" name="email" placeholder="Email" required>
+                    <input class="data_fields" type="password" name="password" placeholder="Password" required>
+                    <input class="data_fields" type="password" name="repeat_password" placeholder="Confirm Password" required>
+                </div>
+                <button class="signup_btn" type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,299 @@
+html{
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2.5%;
+    background-color: rgba(51, 51, 51, 0.5);
+}
+
+.logo{
+    height: 80%;
+}
+
+header > .title{
+    font-size: 5rem;
+    color: #333;
+}
+
+.logout{
+    color: #fff;
+    font-size: 2rem;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    background-color: #333;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    height: 90vh;
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+}
+
+.board_panel{
+    width: 20%;
+    min-width: 160px;
+    height: 100%;
+    background-color:  rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding: 2rem 2.5%;
+}
+
+.main_field{
+    width: 80%;
+    height: 100%;
+    background-color: #333;
+}
+
+
+.board_panel  .title{
+    font-size: 2rem;
+    border-right: 1px solid #333;;
+}
+
+.create_board_btn{
+    color: #fff;
+    background-color: #333;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    text-decoration: none;
+    margin: 0;
+    font-size: 1.5rem;
+    border: none;
+}
+
+.upper_nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #333;
+    margin-bottom: 1rem;
+}
+
+.board_header{
+    height: 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem;
+    border-bottom: 1px solid #333;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 1rem;
+}
+
+.board_title{
+    font-size: 2rem;
+    color: #fff;
+    border-bottom: rgba(0, 0, 0, 0.3);
+    text-transform: capitalize;
+}
+
+.board_list{
+    display: flex;
+    flex-direction: column;
+}
+
+.board_btn{
+    width: 100%;
+    min-width: 120px;
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.create_list_btn{
+    padding: .4rem 1rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    text-decoration: none;
+
+}
+
+.board_content{
+    display: flex;
+    padding: 2.5rem;
+    overflow-x: auto;
+    height: 90%;
+}
+
+.board_content::-webkit-scrollbar {
+    width: 6px; /* Width of the scrollbar */
+}
+
+.board_content::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.4); /* Color of the scrollbar track */
+}
+
+.board_content::-webkit-scrollbar-thumb {
+    background-color: #555; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Rounded corners for the scrollbar thumb */
+}
+
+.list_item{
+    width: 25rem;
+    min-width: 25rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 2.5rem;
+    height: fit-content;
+}
+
+.list_item:last-child{
+    margin-right: 0;
+}
+
+.list_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #333;
+    padding: 1rem;
+}
+
+.list_title{
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 1.5rem;
+}
+
+.create_task{
+    padding: .4rem 1rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.list_content{
+    display: flex;
+    flex-direction: column;
+}
+
+.add_task_field{
+    width: 100%;
+    background-color: #333;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    border: none;
+}
+
+.task_item {
+    padding: 1rem; /* Відступи для таску */
+    background-color: rgba(0, 0, 0, 0.4); /* Колір фону для таску */
+    border-radius: 5px; /* Закруглені кути для таску */
+    margin: 0 5px;
+    margin-bottom: 1rem; /* Відступи знизу для таску */
+}
+
+.tasks{
+    overflow-y: auto;
+    max-height: 680px;
+}
+
+.tasks::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.tasks::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.4); /* Color of the scrollbar track */
+}
+
+.tasks::-webkit-scrollbar-thumb {
+    background-color: #333; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Rounded corners for the scrollbar thumb */
+}
+
+.tasks::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Color of the scrollbar thumb on hover */
+}
+
+.task_title {
+    color: #fff; /* Колір тексту для назви таску */
+    font-size: 1.5rem; /* Розмір шрифту для назви таску */
+    margin-bottom: 0.5rem; /* Відступ знизу для назви таску */
+}
+
+.task_description {
+    color: #fff; /* Колір тексту для опису таску */
+    font-size: 1.2rem; /* Розмір шрифту для опису таску */
+    margin-bottom: 0.5rem; /* Відступ знизу для опису таску */
+}
+
+.task_end_date {
+    color: #fff; /* Колір тексту для кінцевої дати таску */
+    font-size: 1.2rem; /* Розмір шрифту для кінцевої дати таску */
+}
+
+
+/* popup */
+
+.popup {
+    display: none; /* Початково приховуємо попап */
+    position: fixed; /* Фіксована позиція відносно вікна браузера */
+    top: 50%; /* Позиціонуємо попап по вертикалі по центру */
+    left: 50%; /* Позиціонуємо попап по горизонталі по центру */
+    transform: translate(-50%, -50%); /* Центруємо попап в центрі вікна браузера */
+    width: 300px; /* Ширина попапу */
+    padding: 20px; /* Відступи всередині попапу */
+    background-color: #fff; /* Колір фону попапу */
+    border: 1px solid #ccc; /* Рамка попапу */
+    border-radius: 5px; /* Закруглені кути попапу */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тінь попапу */
+    z-index: 999; /* Значення z-index, щоб попап був над іншими елементами */
+    transition: all .3s;
+}
+
+/* Стилі для кнопки "Створити" у попапі */
+.popup button {
+    background-color: #333; /* Зелений колір кнопки */
+    color: white; /* Білий колір тексту */
+    padding: 10px 20px; /* Відступи */
+    border: none; /* Без рамки */
+    border-radius: 5px; /* Закруглені кути */
+    cursor: pointer; /* Зміна вигляду курсора */
+    margin: 0 auto;
+}
+
+/* Стилі для текстового поля у попапі */
+.popup input {
+    width: 100%; /* Ширина поля */
+    padding: 10px; /* Відступи всередині поля */
+    margin: 10px 0; /* Відступ знизу */
+    border: 1px solid #ccc; /* Рамка поля */
+    border-radius: 3px; /* Закруглені кути поля */
+}

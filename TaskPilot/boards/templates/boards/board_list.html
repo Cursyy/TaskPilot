@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskPilot | Boards</title>
+    <link rel="stylesheet" href="{% static 'boards/main_page.css' %}">
+    <link rel="icon" href="{% static 'img/small_logo.svg' %}">
+</head>
+<body>
+    <header>
+        <img src="{% static 'img/small_logo.svg' %}" class="logo" alt="Logo">
+        <div class="title">TaskPilot</div>
+        <a href="{% url 'account:login_page' %}" class="logout">Log Out</a>
+    </header>
+    <main>
+        <div class="container">
+            <div class="board_panel">
+                <div class="upper_nav">
+                    <div class="title">Boards</div>
+                    <button class="create_board_btn" id="create_board_btn">Create</button>
+                </div>
+                <div id="boards_container"></div>
+                <div class="board_list">
+                    {% for board in boards %}
+                        <button class="board_btn">{{board.name}}</button>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="main_field">
+                <div class="board_header">
+                    <div id="board_title" class="board_title">Board name</div>
+                </div>
+                <div class="board_content" id="board_content">
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <div id="create_board_popup" class="popup">
+        <!-- Попап для створення дошки -->
+        <h2 class="popup_title">Create a new board</h2>
+        <form id="create_board_form" method="post">
+            {% csrf_token %}
+            <input type="text" id="board_name" placeholder="Board name">
+            <button type="submit">Створити</button>
+        </form>
+    </div>
+    <div id="create_list_popup" class="popup">
+        <h2 class="popup_title">Create a new list</h2>
+        <form id="create_list_form" method="post">
+            {% csrf_token %}
+            <input type="text" id="list_name" placeholder="List name">
+            <button type="submit">Create</button>
+        </form>
+    </div>
+    <div id="create_task_popup" class="popup">
+        <h2 class="popup_title">Create a new task</h2>
+        <form id="create_task_form" method="post">
+            {% csrf_token %}
+            <input type="text" id="task_title" placeholder="Task title">
+            <textarea id="task_description" placeholder="Task description"></textarea>
+            <input type="date" id="task_end_date" placeholder="Task end date">
+            <button type="submit">Create</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

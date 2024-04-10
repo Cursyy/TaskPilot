@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskPilot</title>
+    <link rel="stylesheet" href="{% static 'accounts/index.css' %}">
+    <link rel="icon" href="{% static 'img/small_logo.svg' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- <div class="title">TaskPilot</div> -->
+        <img src="{% static 'img/logo.svg' %}" class="logo" alt="Logo">
+        <div class="btn_box">
+            <a href="{% url 'account:login_page' %}" class="btn">Log In</a>
+            <a href="{% url 'account:signup_page' %}" class="btn">Sign Up</a>
+        </div>
+    </div>
+</body>
+</html>
