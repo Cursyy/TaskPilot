@@ -16,6 +16,7 @@ class List(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Task(models.Model):
+    id = models.AutoField(primary_key=True)
     list_name = models.CharField(max_length=255, null=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
