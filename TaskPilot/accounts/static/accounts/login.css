@@ -82,3 +82,33 @@ form{
     color: #fff;
     border-color: #fff;
 }
+
+.data_box > label{
+    width: 100%;
+}
+
+.password_box{
+    position: relative;
+}
+
+.show_pass {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/hidden.png); /* Replace with your eye icon image path */
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    transition: all .3s;
+}
+
+.register_link{
+    color: #fff;
+    text-decoration: none;
+    margin-top: 5%;
+    font-size: 1rem;
+    text-align: center;
+}

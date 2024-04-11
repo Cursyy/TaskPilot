@@ -1,10 +1,12 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.db.models import Max
 from django.http import JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
 from .models import *
 
+@login_required
 def board_list(request):
     boards = Board.objects.all()
     return render(request, 'boards/board_list.html', {'boards': boards})

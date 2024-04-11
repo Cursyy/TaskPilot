@@ -1,8 +1,9 @@
 from django.urls import path
+from django.contrib.auth.decorators import login_required
 from . import views
 
 urlpatterns = [
-    path('', views.board_list, name='board_list'),
+    path('', login_required(views.board_list), name='board_list'),
     path('get_board_content/', views.get_board_content, name='get_board_content'),
     path('board_create/', views.board_create, name='board_create'),
     path('list_create/', views.list_create, name='list_create'),

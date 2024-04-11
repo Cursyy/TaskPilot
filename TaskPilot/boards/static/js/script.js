@@ -14,6 +14,7 @@ window.addEventListener('resize', function() {
 
 $(document).ready(function() {
     // Функція для оновлення кольору дати
+
     function updateDateColor() {
         $('.task_end_date').each(function() {
             var endDate = new Date($(this).text());

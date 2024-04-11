@@ -15,12 +15,14 @@
             <div class="wrap">
                 <h1 class="title">Login</h1>
                 <div class="data_box">
-                    <input class="data_fields" type="email" name="email" placeholder="Email" required>
-                    <input class="data_fields" type="password" name="password" placeholder="Password" required>
+                    <label for="email"><input class="data_fields" type="email" name="email" placeholder="Email" required></label>
+                    <label for="password" class="password_box"><input class="data_fields" type="password" name="password" placeholder="Password" required  minlength="8"><button class="show_pass" type="button"></button></label>
                 </div>
                 <button class="login_btn" type="submit">Log In</button>
+                <a href="{% url 'account:signup_page' %}" class="register_link">Don't have an account? Register</a>
             </div>
         </form>
     </div>
+    <script src="{% static 'js/login.js' %}"></script>
 </body>
 </html>
